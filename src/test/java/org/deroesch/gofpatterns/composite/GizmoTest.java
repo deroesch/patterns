@@ -57,6 +57,12 @@ public class GizmoTest {
     }
 
     @Test
+    public void testTypes() {
+        assertEquals(NodeType.LEAF, leaves[0].getType());
+        assertEquals(NodeType.COMPOSITE, composites[0].getType());
+    }
+
+    @Test
     public void testProblems() {
 
         final Gizmo root = composites[0];

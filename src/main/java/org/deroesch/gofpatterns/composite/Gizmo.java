@@ -16,4 +16,7 @@ public interface Gizmo {
 
     @NonNull
     Set<Gizmo> children();
+
+    @NonNull
+    NodeType getType();
 }

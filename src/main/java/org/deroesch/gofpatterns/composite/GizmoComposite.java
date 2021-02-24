@@ -46,4 +46,10 @@ public class GizmoComposite implements Gizmo {
     }
 
     private Set<Gizmo> objects = new HashSet<>();
+
+    @Override
+    public @NonNull
+    NodeType getType() {
+        return NodeType.COMPOSITE;
+    }
 }
