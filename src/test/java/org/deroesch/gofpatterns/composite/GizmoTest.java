@@ -1,6 +1,7 @@
 package org.deroesch.gofpatterns.composite;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -57,9 +58,9 @@ public class GizmoTest {
     }
 
     @Test
-    public void testTypes() {
-        assertEquals(NodeType.LEAF, leaves[0].getType());
-        assertEquals(NodeType.COMPOSITE, composites[0].getType());
+    public void testNodeTypes() {
+        assertTrue(leaves[0].isLeaf());
+        assertFalse(composites[0].isLeaf());
     }
 
     @Test

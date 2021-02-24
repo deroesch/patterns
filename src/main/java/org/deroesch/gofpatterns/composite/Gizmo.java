@@ -14,9 +14,9 @@ public interface Gizmo {
 
     boolean contains(@NonNull Gizmo obj);
 
+    boolean isLeaf();
+
     @NonNull
     Set<Gizmo> children();
 
-    @NonNull
-    NodeType getType();
 }

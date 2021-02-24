@@ -2,7 +2,6 @@ package org.deroesch.gofpatterns.composite;
 
 import java.util.Set;
 
-import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -34,8 +33,7 @@ public class GizmoLeaf implements Gizmo {
     }
 
     @Override
-    public @NonNull
-    NodeType getType() {
-        return NodeType.LEAF;
+    public boolean isLeaf() {
+        return true;
     }
 }
