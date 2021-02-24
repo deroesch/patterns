@@ -14,9 +14,9 @@ public class GizmoTest {
     private Gizmo[] composites;
 
     @BeforeEach
-    public void initEach() {
+    public void refreshTestObjects() {
 
-        // New leaves
+        // New leaves (edge nodes)
         leaves = new Gizmo[10];
         for (int i = 0; i < leaves.length; i++)
             leaves[i] = new GizmoLeaf();
@@ -28,8 +28,7 @@ public class GizmoTest {
     }
 
     @Test
-    public void testAggregation() {
-
+    public void testNodeComposition() {
         final Gizmo root = composites[0];
         root.add(leaves[0]);
         root.add(leaves[1]);
@@ -64,8 +63,7 @@ public class GizmoTest {
     }
 
     @Test
-    public void testProblems() {
-
+    public void testUnsupportedOperations() {
         final Gizmo root = composites[0];
         assertThrows(IllegalArgumentException.class, () -> root.add(root));
 
@@ -85,7 +83,7 @@ public class GizmoTest {
     }
 
     @Test
-    public void testContainer() {
+    public void testAddRemove() {
         final Gizmo root = composites[0];
         assertEquals(0, root.children().size());
 
