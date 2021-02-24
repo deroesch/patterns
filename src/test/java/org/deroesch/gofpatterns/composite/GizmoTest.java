@@ -6,8 +6,10 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+@DisplayName(value = "Composite")
 public class GizmoTest {
 
     private Gizmo[] leaves;
@@ -28,6 +30,7 @@ public class GizmoTest {
     }
 
     @Test
+    @DisplayName(value = "Tree Composition")
     public void testNodeComposition() {
         final Gizmo root = composites[0];
         root.add(leaves[0]);
@@ -57,12 +60,14 @@ public class GizmoTest {
     }
 
     @Test
+    @DisplayName(value = "Node Type")
     public void testNodeTypes() {
         assertTrue(leaves[0].isLeaf());
         assertFalse(composites[0].isLeaf());
     }
 
     @Test
+    @DisplayName(value = "Unsupported Operations")
     public void testUnsupportedOperations() {
         final Gizmo root = composites[0];
         assertThrows(IllegalArgumentException.class, () -> root.add(root));
@@ -75,6 +80,7 @@ public class GizmoTest {
     }
 
     @Test
+    @DisplayName(value = "Null Arugments")
     public void testNullArgs() {
         final Gizmo composite = composites[0];
         assertThrows(NullPointerException.class, () -> composite.add(null));
@@ -83,6 +89,7 @@ public class GizmoTest {
     }
 
     @Test
+    @DisplayName(value = "Simple Add and Remove")
     public void testAddRemove() {
         final Gizmo root = composites[0];
         assertEquals(0, root.children().size());
