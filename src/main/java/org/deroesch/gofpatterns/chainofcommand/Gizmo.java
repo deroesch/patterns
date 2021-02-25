@@ -25,7 +25,7 @@ public abstract class Gizmo {
             successor.execute();
     }
 
-    private boolean hasSuccessor() {
+    boolean hasSuccessor() {
         return null != successor;
     }
 
