@@ -1,5 +1,7 @@
 package org.deroesch.gofpatterns.singleton;
 
+import lombok.NonNull;
+
 /**
  * Singleton
  */
@@ -16,6 +18,7 @@ public class Gizmo {
      * 
      * @return the singleton instance
      */
+    @NonNull
     public static Gizmo get() {
         if (null == gizmo) {
             synchronized (Gizmo.class) {

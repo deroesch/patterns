@@ -10,7 +10,11 @@ class GizmoTest {
     @Test
     void testGet() {
         Gizmo gizmo = Gizmo.get();
+
+        // Can never be null
         assertNotNull(gizmo);
+
+        // Check for identical objects
         assertSame(gizmo, Gizmo.get());
         assertSame(Gizmo.get(), Gizmo.get());
     }
