@@ -8,7 +8,7 @@ import lombok.NonNull;
 public class Gizmo {
 
     /**
-     * Private ctor
+     * Private constructor
      */
     private Gizmo() {
     }
