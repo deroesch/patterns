@@ -12,34 +12,34 @@ import org.junit.jupiter.api.Test;
 @DisplayName(value = "Composite")
 public class GizmoTest {
 
-    private Gizmo[] leaves;
-    private Gizmo[] composites;
+    private GizmoComposite[] leaves;
+    private GizmoComposite[] composites;
 
     @BeforeEach
     public void refreshTestObjects() {
 
         // New leaves (edge nodes)
-        leaves = new Gizmo[10];
+        leaves = new GizmoComposite[10];
         for (int i = 0; i < leaves.length; i++)
-            leaves[i] = new GizmoLeaf();
+            leaves[i] = new GizmoTerminal();
 
         // New composites (interior nodes)
-        composites = new Gizmo[10];
+        composites = new GizmoComposite[10];
         for (int i = 0; i < leaves.length; i++)
-            composites[i] = new GizmoComposite();
+            composites[i] = new GizmoNonTerminal();
     }
 
     @Test
     @DisplayName(value = "Tree Composition")
     public void testNodeComposition() {
-        final Gizmo root = composites[0];
+        final GizmoComposite root = composites[0];
         root.add(leaves[0]);
         root.add(leaves[1]);
         root.add(leaves[2]);
         root.add(leaves[3]);
         assertEquals(4, root.children().size());
 
-        final Gizmo composite1 = composites[1];
+        final GizmoComposite composite1 = composites[1];
         root.add(composite1);
         assertEquals(5, root.children().size());
         assertTrue(root.contains(composite1));
@@ -51,7 +51,7 @@ public class GizmoTest {
         assertEquals(4, composite1.children().size());
         assertEquals(5, root.children().size());
 
-        final Gizmo composite2 = composites[2];
+        final GizmoComposite composite2 = composites[2];
         root.add(composite2);
         assertTrue(root.contains(composite2));
         assertEquals(6, root.children().size());
@@ -69,10 +69,10 @@ public class GizmoTest {
     @Test
     @DisplayName(value = "Unsupported Operations")
     public void testUnsupportedOperations() {
-        final Gizmo root = composites[0];
+        final GizmoComposite root = composites[0];
         assertThrows(IllegalArgumentException.class, () -> root.add(root));
 
-        final Gizmo leaf = leaves[0];
+        final GizmoComposite leaf = leaves[0];
         assertThrows(UnsupportedOperationException.class, () -> leaf.add(root));
         assertThrows(UnsupportedOperationException.class, () -> leaf.remove(root));
         assertThrows(UnsupportedOperationException.class, () -> leaf.contains(root));
@@ -82,7 +82,7 @@ public class GizmoTest {
     @Test
     @DisplayName(value = "Null Arugments")
     public void testNullArgs() {
-        final Gizmo composite = composites[0];
+        final GizmoComposite composite = composites[0];
         assertThrows(NullPointerException.class, () -> composite.add(null));
         assertThrows(NullPointerException.class, () -> composite.remove(null));
         assertThrows(NullPointerException.class, () -> composite.contains(null));
@@ -91,10 +91,10 @@ public class GizmoTest {
     @Test
     @DisplayName(value = "Simple Add and Remove")
     public void testAddRemove() {
-        final Gizmo root = composites[0];
+        final GizmoComposite root = composites[0];
         assertEquals(0, root.children().size());
 
-        final Gizmo leaf = leaves[0];
+        final GizmoComposite leaf = leaves[0];
         root.add(leaf);
         assertEquals(1, root.children().size());
 

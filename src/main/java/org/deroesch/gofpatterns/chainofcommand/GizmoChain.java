@@ -2,19 +2,19 @@ package org.deroesch.gofpatterns.chainofcommand;
 
 import lombok.NonNull;
 
-public abstract class Gizmo {
+public abstract class GizmoChain {
 
     /**
      * No successor
      */
-    public Gizmo() {
+    public GizmoChain() {
         super();
     }
 
     /**
      * With successor
      */
-    public Gizmo(@NonNull Gizmo successor) {
+    public GizmoChain(@NonNull GizmoChain successor) {
         super();
         this.successor = successor;
     }
@@ -34,6 +34,6 @@ public abstract class Gizmo {
 
     // Who's next?
     @NonNull
-    private Gizmo successor;
+    private GizmoChain successor;
 
 }

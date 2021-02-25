@@ -5,12 +5,12 @@ import lombok.NonNull;
 /**
  * Singleton
  */
-public class Gizmo {
+public class GizmoSingleton {
 
     /**
      * Private constructor
      */
-    private Gizmo() {
+    private GizmoSingleton() {
     }
 
     /**
@@ -19,11 +19,11 @@ public class Gizmo {
      * @return the singleton instance
      */
     @NonNull
-    public static Gizmo get() {
+    public static GizmoSingleton get() {
         if (null == obj) {
-            synchronized (Gizmo.class) {
+            synchronized (GizmoSingleton.class) {
                 if (null == obj) {
-                    obj = new Gizmo();
+                    obj = new GizmoSingleton();
                 }
             }
         }
@@ -31,5 +31,5 @@ public class Gizmo {
     }
 
     // The singleton object
-    private static Gizmo obj;
+    private static GizmoSingleton obj;
 }

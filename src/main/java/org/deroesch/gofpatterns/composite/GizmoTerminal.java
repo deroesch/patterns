@@ -5,7 +5,7 @@ import java.util.Set;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class GizmoLeaf implements Gizmo {
+public class GizmoTerminal implements GizmoComposite {
 
     @Override
     public void sayHello() {
@@ -13,22 +13,22 @@ public class GizmoLeaf implements Gizmo {
     }
 
     @Override
-    public void add(Gizmo obj) {
+    public void add(GizmoComposite obj) {
         throw new UnsupportedOperationException();
     }
 
     @Override
-    public void remove(Gizmo obj) {
+    public void remove(GizmoComposite obj) {
         throw new UnsupportedOperationException();
     }
 
     @Override
-    public boolean contains(Gizmo obj) {
+    public boolean contains(GizmoComposite obj) {
         throw new UnsupportedOperationException();
     }
 
     @Override
-    public Set<Gizmo> children() {
+    public Set<GizmoComposite> children() {
         throw new UnsupportedOperationException();
     }
 

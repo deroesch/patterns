@@ -1,54 +1,22 @@
 package org.deroesch.gofpatterns.composite;
 
-import java.util.Collections;
-import java.util.HashSet;
 import java.util.Set;
 
 import lombok.NonNull;
-import lombok.extern.slf4j.Slf4j;
 
-@Slf4j
-public class GizmoComposite implements Gizmo {
+public interface GizmoComposite {
 
-    @Override
-    public void sayHello() {
-        log.info(String.format("Hello from Composite %s!", this));
+    void sayHello();
 
-        // Say hello from children, too.
-        if (children().size() > 0) {
-            log.info("My children are:");
-            for (Gizmo obj : children())
-                obj.sayHello();
-        }
-    }
+    void add(@NonNull GizmoComposite obj);
 
-    @Override
-    public void add(@NonNull Gizmo obj) {
-        if (obj == this)
-            throw new IllegalArgumentException("Don't add yourself to yourself.");
-        this.objects.add(obj);
-    }
+    void remove(@NonNull GizmoComposite obj);
 
-    @Override
-    public void remove(@NonNull Gizmo obj) {
-        this.objects.remove(obj);
-    }
+    boolean contains(@NonNull GizmoComposite obj);
 
-    @Override
-    public boolean contains(@NonNull Gizmo obj) {
-        return this.objects.contains(obj);
-    }
+    boolean isLeaf();
 
-    @Override
     @NonNull
-    public Set<Gizmo> children() {
-        return Collections.unmodifiableSet(objects);
-    }
+    Set<GizmoComposite> children();
 
-    private Set<Gizmo> objects = new HashSet<>();
-
-    @Override
-    public boolean isLeaf() {
-        return false;
-    }
 }

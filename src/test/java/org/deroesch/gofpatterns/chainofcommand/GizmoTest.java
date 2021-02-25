@@ -32,18 +32,18 @@ class GizmoTest {
     @DisplayName(value = "Run the chain")
     void testExecute() {
 
-        Gizmo last = new Last();
-        Gizmo middle = new Middle(last);
-        Gizmo first = new First(middle);
+        GizmoChain last = new Last();
+        GizmoChain middle = new Middle(last);
+        GizmoChain first = new First(middle);
 
         first.execute();
 
         assertTrue(handled);
     }
 
-    class First extends Gizmo {
+    class First extends GizmoChain {
 
-        public First(@NonNull Gizmo successor) {
+        public First(@NonNull GizmoChain successor) {
             super(successor);
         }
 
@@ -54,9 +54,9 @@ class GizmoTest {
         }
     }
 
-    class Middle extends Gizmo {
+    class Middle extends GizmoChain {
 
-        public Middle(@NonNull Gizmo successor) {
+        public Middle(@NonNull GizmoChain successor) {
             super(successor);
         }
 
@@ -67,7 +67,7 @@ class GizmoTest {
         }
     }
 
-    class Last extends Gizmo {
+    class Last extends GizmoChain {
 
         public Last() {
         }

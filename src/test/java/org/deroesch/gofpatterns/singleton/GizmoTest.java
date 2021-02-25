@@ -9,13 +9,13 @@ class GizmoTest {
 
     @Test
     void testGet() {
-        Gizmo gizmo = Gizmo.get();
+        GizmoSingleton gizmoSingleton = GizmoSingleton.get();
 
         // Can never be null
-        assertNotNull(gizmo);
+        assertNotNull(gizmoSingleton);
 
         // Check for identical objects
-        assertSame(gizmo, Gizmo.get());
-        assertSame(Gizmo.get(), Gizmo.get());
+        assertSame(gizmoSingleton, GizmoSingleton.get());
+        assertSame(GizmoSingleton.get(), GizmoSingleton.get());
     }
 }
