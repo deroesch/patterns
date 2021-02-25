@@ -20,16 +20,16 @@ public class Gizmo {
      */
     @NonNull
     public static Gizmo get() {
-        if (null == gizmo) {
+        if (null == obj) {
             synchronized (Gizmo.class) {
-                if (null == gizmo) {
-                    gizmo = new Gizmo();
+                if (null == obj) {
+                    obj = new Gizmo();
                 }
             }
         }
-        return gizmo;
+        return obj;
     }
 
     // The singleton object
-    private static Gizmo gizmo;
+    private static Gizmo obj;
 }
